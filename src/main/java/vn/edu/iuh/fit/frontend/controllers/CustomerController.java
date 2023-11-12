@@ -74,4 +74,9 @@ public class CustomerController {
         }
         return "redirect:/admin/customers";
     }
+    @GetMapping("/delete/{id}")
+    public String handleDeleteCustomer(@PathVariable("id") long customerID){
+        customerRepository.deleteById(customerID);
+        return "redirect:/admin/customers";
+    }
 }
