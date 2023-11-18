@@ -21,7 +21,7 @@ public class EmployeeController {
 
     @GetMapping("")
     public String getAll(Model model){
-        List<Employee> employees = employeeRepository.findAll();
+        List<Employee> employees = employeeRepository.findAllByStatusNot(EmployeeStatus.TERMINATED);
         model.addAttribute("employees", employees);
         return "admin/employees/crudEmployee";
     }
@@ -49,7 +49,33 @@ public class EmployeeController {
     }
     @GetMapping("/delete/{id}")
     public String handleDeleteEmployee(@PathVariable("id") long employeeID){
-        employeeRepository.deleteById(employeeID);
+        employeeService.hiddenEmployee(employeeID);
         return "redirect:/admin/employees";
     }
+    @GetMapping("/edit/{id}")
+    public ModelAndView handleOpenEditPage(@PathVariable("id") long employeeID){
+        ModelAndView modelAndView = new ModelAndView();
+        Employee employee = employeeRepository.findById(employeeID).orElse(null);
+        if (employee == null){
+            return new ModelAndView("redirect:/admin/employees/");
+        }
+        modelAndView.addObject("employee", employee);
+        modelAndView.addObject("employeeStatuss", EmployeeStatus.values());
+        modelAndView.setViewName("admin/employees/editEmployee");
+        return modelAndView;
+    }
+    @PostMapping("/edit")
+    public String handleEditEmployee(@ModelAttribute("employee") Employee employee, Model model){
+        try {
+            employeeRepository.save(employee);
+        } catch (Exception e){
+            model.addAttribute("errEditEmpl", "Email đã tồn tại!");
+            model.addAttribute("employeeStatuss", EmployeeStatus.values());
+            return "admin/employees/editEmployee";
+        }
+
+        return "redirect:/admin/employees";
+    }
+
+
 }

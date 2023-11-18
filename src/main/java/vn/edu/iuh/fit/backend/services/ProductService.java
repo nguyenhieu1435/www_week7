@@ -6,6 +6,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import vn.edu.iuh.fit.backend.enums.ProductStatus;
 import vn.edu.iuh.fit.backend.models.Product;
 import vn.edu.iuh.fit.backend.repositories.IProductRepository;
 
@@ -20,5 +21,14 @@ public class ProductService {
         Sort sort = Sort.by(Sort.Direction.fromString(sortDirection), sortBy);
         Pageable pageable = PageRequest.of(pageNo, sizeNo, sort);
         return productRepository.findAll(pageable);
+    }
+    public void hiddenProduct(long productID){
+        Product product = productRepository.findById(productID).orElse(null);
+        if (product == null){
+            return;
+        }
+        product.setStatus(ProductStatus.TERMINATED);
+        productRepository.save(product);
+
     }
 }
