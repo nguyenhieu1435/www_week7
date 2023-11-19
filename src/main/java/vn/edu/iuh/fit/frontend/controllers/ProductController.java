@@ -86,19 +86,16 @@ public class ProductController {
         cloudinary.config.secure = true;
         productImage = new ProductImage();
 
-        File primaryFile = new File(pathMulti.getOriginalFilename());
-        primaryFile.createNewFile();
-//        FileOutputStream fos = new FileOutputStream(primaryFile);
-//        fos.write(pathMulti.getBytes());
-//        fos.close();
+        File primaryFile = new File(System.getProperty("java.io.tmpdir") + "/" + pathMulti.getOriginalFilename());
+        pathMulti.transferTo(primaryFile);
+
         Map uploadResultImgPrimary = cloudinary.uploader().upload(primaryFile, ObjectUtils.emptyMap());
 
         if (!alterMulti.getOriginalFilename().isEmpty()){
-            File alterFile = new File(alterMulti.getOriginalFilename());
-            alterFile.createNewFile();
-//            FileOutputStream fosal = new FileOutputStream(alterFile);
-//            fosal.write(alterMulti.getBytes());
-//            fosal.close();
+            File alterFile = new File(System.getProperty("java.io.tmpdir") + "/"
+                    + alterMulti.getOriginalFilename());
+            pathMulti.transferTo(alterFile);
+
             Map uploadResultImgAlter = cloudinary.uploader().upload(alterFile, ObjectUtils.emptyMap());
             productImage.setPath((String)uploadResultImgAlter.get("url"));
         }
