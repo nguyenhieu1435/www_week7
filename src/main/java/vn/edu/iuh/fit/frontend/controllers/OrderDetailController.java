@@ -61,7 +61,7 @@ public class OrderDetailController {
             return "admin/order-details/addOrderDetail";
         }
         ProductPrice productPrice = productPriceRepository.findProductPriceNewestByProductID(orderDetail.getProduct().getProduct_id()).orElse(null);
-        orderDetail.setPrice(orderDetail.getQuantity() * productPrice.getPrice());
+        orderDetail.setPrice(productPrice.getPrice());
         orderDetailRepository.save(orderDetail);
         return "redirect:/admin/order-details/" + orderDetail.getOrder().getOrder_id();
     }
@@ -84,7 +84,7 @@ public class OrderDetailController {
 
         ProductPrice productPrice = productPriceRepository.findProductPriceNewestByProductID(orderDetail.getProduct()
                 .getProduct_id()).orElse(null);
-        orderDetail.setPrice(orderDetail.getQuantity() * productPrice.getPrice());
+        orderDetail.setPrice(productPrice.getPrice());
         orderDetailRepository.save(orderDetail);
         return "redirect:/admin/order-details/" + orderDetail.getOrder().getOrder_id();
     }

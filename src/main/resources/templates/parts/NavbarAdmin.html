@@ -20,13 +20,20 @@
         <a class="nav-link btn btn-outline-success mr-2" th:href="@{/admin/products}">CRUD Product</span></a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link btn btn-outline-success mr-2" href="#">Thống kê order theo ngày</span></a>
+        <a class="nav-link btn btn-outline-success mr-2"
+           th:href="@{/admin/statictisOrderByDay}"
+        >Thống kê order theo ngày</span></a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link btn btn-outline-success mr-2" href="#">Thống kê order khoảng thời gian</span></a>
+
+        <a class="nav-link btn btn-outline-success mr-2"
+           th:href="@{/admin/statisticTimeSpace}"
+        >Thống kê order khoảng thời gian</span></a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link btn btn-outline-success mr-2" href="#">Thống kê order theo nhân viên</span></a>
+        <a class="nav-link btn btn-outline-success mr-2"
+           th:href="@{/admin/statisticByEmployeeID}"
+        >Thống kê order theo nhân viên</span></a>
       </li>
     </ul>
   </div>

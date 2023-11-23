@@ -83,7 +83,7 @@ public class OrderController {
                 .findProductPriceNewestByProductID(product.getProduct_id()).orElse(null);
         OrderDetail orderDetail = dtoAddNewOrder.getOrderDetail();
         orderDetail.setOrder(order);
-        orderDetail.setPrice(orderDetail.getQuantity() * productPrice.getPrice());
+        orderDetail.setPrice(productPrice.getPrice());
         orderDetailRepository.save(orderDetail);
         return "redirect:/admin/orders";
     }
