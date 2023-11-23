@@ -94,7 +94,7 @@ public class ProductController {
         if (!alterMulti.getOriginalFilename().isEmpty()){
             File alterFile = new File(System.getProperty("java.io.tmpdir") + "/"
                     + alterMulti.getOriginalFilename());
-            pathMulti.transferTo(alterFile);
+            alterMulti.transferTo(alterFile);
 
             Map uploadResultImgAlter = cloudinary.uploader().upload(alterFile, ObjectUtils.emptyMap());
             productImage.setPath((String)uploadResultImgAlter.get("url"));

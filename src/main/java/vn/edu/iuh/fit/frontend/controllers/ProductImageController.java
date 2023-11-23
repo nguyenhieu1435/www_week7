@@ -66,7 +66,7 @@ public class ProductImageController {
         if (!alterMulti.getOriginalFilename().isEmpty()){
             File alterFile = new File(System.getProperty("java.io.tmpdir") + "/"
                     + alterMulti.getOriginalFilename());
-            pathMulti.transferTo(alterFile);
+            alterMulti.transferTo(alterFile);
             Map uploadResultImgAlter = cloudinary.uploader().upload(alterFile, ObjectUtils.emptyMap());
             productImage.setPath((String)uploadResultImgAlter.get("url"));
         }
@@ -94,7 +94,6 @@ public class ProductImageController {
         ModelAndView modelAndView = new ModelAndView();
 
         Cloudinary cloudinary = new Cloudinary(environment.getProperty("CLOUDINARY_URL"));
-        cloudinary.config.secure = true;
 
 
         File primaryFile = new File(System.getProperty("java.io.tmpdir") + "/" + pathMulti.getOriginalFilename());
@@ -106,7 +105,7 @@ public class ProductImageController {
         if (!alterMulti.getOriginalFilename().isEmpty()){
             File alterFile = new File(System.getProperty("java.io.tmpdir") + "/"
                     + alterMulti.getOriginalFilename());
-            pathMulti.transferTo(alterFile);
+            alterMulti.transferTo(alterFile);
             Map uploadResultImgAlter = cloudinary.uploader().upload(alterFile, ObjectUtils.emptyMap());
             productImage.setPath((String)uploadResultImgAlter.get("url"));
         }

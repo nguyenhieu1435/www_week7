@@ -61,13 +61,11 @@ public class ClientControllers {
         Object carts = session.getAttribute("carts");
         if (carts == null){
             session.setAttribute("carts", mapCarts);
-            return "redirect:/client/products";
-        } else {
-            HashMap<Long, Integer> cartSession = (HashMap<Long, Integer>) session.getAttribute("carts");
-            int newQuantity = cartSession.containsKey(productID) ? cartSession.get(productID) + quantity : quantity;
-            cartSession.put(productID, newQuantity);
-            session.setAttribute("carts", cartSession);
         }
+        HashMap<Long, Integer> cartSession = (HashMap<Long, Integer>) session.getAttribute("carts");
+        int newQuantity = cartSession.containsKey(productID) ? cartSession.get(productID) + quantity : quantity;
+        cartSession.put(productID, newQuantity);
+        session.setAttribute("carts", cartSession);
         model.addAttribute("noticeAddToCart", "Thêm thành công");
         return "redirect:/client/products";
     }

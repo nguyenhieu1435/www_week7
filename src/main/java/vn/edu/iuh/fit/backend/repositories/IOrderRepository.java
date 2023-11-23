@@ -13,7 +13,8 @@ import java.util.Map;
 public interface IOrderRepository extends JpaRepository<Order, Long> {
     @Query("SELECT o.orderDate as orderDate, count(o.orderDate) as totalOrderNumber from Order o group by o.orderDate")
     public List<IOrderCount> statictisOrderByDay();
-    @Query("select sum(od.quantity * od.price) from Order o join o.orderDetails od group by o.order_id")
+    @Query("select sum(od.quantity * od.price) from Order o join o.orderDetails od" +
+            " where o.orderDate between :beginDate and :endDate group by o.order_id")
     public double getTotalPriceByBeginDateAndEndDate(@Param("beginDate") LocalDateTime beginDate
             , @Param("endDate") LocalDateTime endDate);
     @Query("select sum(od.quantity * od.price) from Order o join o.orderDetails od where o.employee.id = :empID" +
