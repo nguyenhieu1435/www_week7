@@ -1,3 +1,12 @@
+<h1>Yêu cầu</h1>
+
+![image](https://github.com/nguyenhieu1435/www_week7/assets/70377398/e9c7010b-5104-4bbb-b933-dbd7e4bda2b5)
+
+<h1>Diagram</h1>
+
+![image](https://github.com/nguyenhieu1435/www_week7/assets/70377398/8ff8f0bc-3f1d-4601-855a-3414849bd47a)
+
+
 ![image](https://github.com/nguyenhieu1435/www_week7/assets/70377398/b56e586c-d155-4a70-ad03-923cd8791850)# www_week7
 
 <h1>Admin Page</h1>
