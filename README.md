@@ -1,3 +1,11 @@
+<h1>Được xây dựng với</h1>
+
+![Java](https://img.shields.io/badge/java-%23ED8B00.svg?logo=java&logoColor=white&style=for-the-badge)
+![Spring](https://img.shields.io/badge/Spring-6DB33F.svg?style=for-the-badge&logo=Spring&logoColor=white)
+![SpringBoot](https://img.shields.io/badge/Spring%20Boot-6DB33F.svg?style=for-the-badge&logo=Spring-Boot&logoColor=white)
+![MariaDB](https://img.shields.io/badge/MariaDB-003545?logo=mariadb&logoColor=white&style=for-the-badge)
+![Thymeleaf](https://img.shields.io/badge/Thymeleaf-%23005C0F.svg?logo=Thymeleaf&logoColor=white&style=for-the-badge)
+
 <h1>Yêu cầu</h1>
 
 ![image](https://github.com/nguyenhieu1435/www_week7/assets/70377398/e9c7010b-5104-4bbb-b933-dbd7e4bda2b5)
@@ -7,7 +15,7 @@
 ![image](https://github.com/nguyenhieu1435/www_week7/assets/70377398/8ff8f0bc-3f1d-4601-855a-3414849bd47a)
 
 
-![image](https://github.com/nguyenhieu1435/www_week7/assets/70377398/b56e586c-d155-4a70-ad03-923cd8791850)# www_week7
+# www_week7
 
 <h1>Admin Page</h1>
 
